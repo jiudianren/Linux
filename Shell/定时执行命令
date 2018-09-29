@@ -1,0 +1,75 @@
+以下实例本人在Centos6.5 64位操作系统中使用
+
+一、定时复制文件
+
+　　a、在/usr/local/wfjb_web_back目录下创建 tomcatBack.sh文件
+
+　　文件内容：
+
+?
+1
+2
+#将tomcat中的应用wfjb_web 复制到 /usr/local/wfjb_web_back/tomcat_back/目录下 并按照日期作为文件名称
+cp -af /usr/local/apache-tomcat-7.0.73/webapps/wfjb_web /usr/local/wfjb_web_back/tomcat_back/$(date -d "today" +"%Y%m%d_%H%M%S")/
+　　b、给tomcatBack.sh文件赋予可执行权限　　
+
+?
+1
+chmod -R 777 tomcatBack.sh
+　　c、创建定时任务
+
+　　　在/etc/crontab文件最后添加定时任务        
+
+?
+1
+0 1 * * * root /usr/local/wfjb_web_back/tomcatBack.sh #每天凌晨一点执行tomcatBack.sh该文件
+　　d、最后重启crontab服务让新配置的定时任务生效　　　　
+
+?
+1
+service crond restart
+二、定时备份mysql数据库
+
+a、在/usr/local/wfjb_web_back目录下创建backDB.sh文件
+
+　　文件内容：
+
+?
+1
+2
+3
+#将数据库testDB 全备份到/usr/local/wfjb_web_back/wfjbdb_back/ 目录下并按照日期作为文件名
+D=$(date +%Y%m%d)
+mysqldump -u root -ptestDB123456 testDB > /usr/local/wfjb_web_back/wfjbdb_back/${D}.sql
+　　b、给backDB.sh文件赋予可执行权限　　　
+
+?
+1
+chmod -R 777 backDB.sh
+　　c、创建定时任务
+
+　　　在/etc/crontab文件最后添加定时任务      
+
+?
+1
+0 2 * * * root /usr/local/wfjb_web_back/backDB.sh #每天凌晨两点执行backDB.sh该文件
+　　d、最后重启crontab服务让新配置的定时任务生效　　　
+
+?
+1
+service crond restart
+三、 crontab 定时 任务
+
+　　每五分钟执行  */5 * * * *
+
+　　每小时执行     0 * * * *
+
+　　每天执行       0 0 * * *
+
+　　每周执行       0 0 * * 0
+
+　　每月执行       0 0 1 * *
+
+　　每年执行       0 0 1 1 *
+
+以上所述是小编给大家介绍的Linux下使用shell脚本自动执行脚本文件，希望对大家有所帮助，如果大家有任何疑问请给我留言，小编会及时回复大家的。在此也非常感谢大家对脚本之家网站的支持！

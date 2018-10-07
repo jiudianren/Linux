@@ -5,6 +5,6 @@ http://man.linuxde.net/find
  http://man.linuxde.net/crontab  
 
 
-  
+  3 od ÃüÁî
 
 

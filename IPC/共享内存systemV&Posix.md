@@ -16,3 +16,23 @@ mmap 有三个目的
 mmap munmap msync
 
 读到12.6节
+无亲缘关系的 进程间共享内存区的两种方法：
+
+open 内存映射文件 （打开的是文件）
+shm_open 共享内存区对象 （打开的具名的一个标志）
+shm_open(const char *name ,int ,mode_t )
+shm_unlink
+
+int ftruncate(int fd ,off_t length)
+修改共享内存或者文件的大小 
+
+
+
+
+int fstat()
+获取共享内存的对象的相关信息
+
+
+
+同一共享内存映射到不同进程的地址空间时，起始地址可以不一样。
+

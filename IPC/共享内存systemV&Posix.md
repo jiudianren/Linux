@@ -35,8 +35,6 @@ int ftruncate(int fd ,off_t length)
 修改共享内存或者文件的大小 
 
 
-
-
 int fstat()
 获取共享内存的对象的相关信息
 

@@ -7,8 +7,6 @@
 #ab 
 ÍøÂç²âÊÔ¹¤¾ß
 
-
-
 #mpstat
 #pidstat
 

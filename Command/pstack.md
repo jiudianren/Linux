@@ -1,3 +1,7 @@
+#pstack 在线进程 
+用于查看进程堆栈，如程序死循环，或者死锁等情况。
+
+
 pstack命令可显示每个进程的栈跟踪，
 pstack $pid即可，pstack命令须由$pid进程的属主或者root运行。
 

@@ -8,7 +8,7 @@
 ## brctl show
 
 
-
+````
 [root@ossdbg1_ccn2 bin]# brctl show
 bridge name     bridge id               STP enabled     interfaces
 docker0         8000.0242a5177587       no              veth23828ba
@@ -26,12 +26,24 @@ virbr0          8000.52540091cbbe       yes             virbr0-nic
 
 
 
+
+# ifconfig
 virbr0: flags=4099<UP,BROADCAST,MULTICAST>  mtu 1500
         inet 192.168.122.1  netmask 255.255.255.0  broadcast 192.168.122.255
         ether 52:54:00:91:cb:be  txqueuelen 0  (Ethernet)
         RX packets 0  bytes 0 (0.0 B)
         RX errors 0  dropped 0  overruns 0  frame 0
         TX packets 0  bytes 0 (0.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+
+docker0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 172.172.0.1  netmask 255.255.0.0  broadcast 0.0.0.0
+        inet6 fe80::42:a5ff:fe17:7587  prefixlen 64  scopeid 0x20<link>
+        ether 02:42:a5:17:75:87  txqueuelen 0  (Ethernet)
+        RX packets 14278758  bytes 7221591593 (6.7 GiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 15169181  bytes 7052646669 (6.5 GiB)
         TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
 
 
@@ -62,3 +74,4 @@ addn-hosts=/var/lib/libvirt/dnsmasq/default.addnhosts
 [root@ossdbg1_ccn2 bin]#
 
 
+`````
